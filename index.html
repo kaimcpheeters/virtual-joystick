@@ -18,29 +18,30 @@
 			left: 0px;
 		}
 		</style>
-		<script type="text/javascript" src="joystick.js"></script> 
-		<script type="text/javascript">
+		<script type="module">
+			import { JoyStick } from './joystick.js';
+
 			window.addEventListener("load", function(){
-			var joystick = new JoyStick({
-				radius: 80,
-				x: window.innerWidth / 2,
-				y: window.innerHeight /2,
-				inner_radius: 70
-			});
-			
-			var status = document.getElementById('status');
-			function run_all_time(){
-				var text = '';
-				if ( joystick.up ) text += 'up ';
-				if ( joystick.down ) text += 'down ';
-				if ( joystick.left ) text += 'left ';
-				if ( joystick.right ) text += 'right';
+				var joystick = new JoyStick({
+					radius: 80,
+					x: window.innerWidth / 2,
+					y: window.innerHeight /2,
+					inner_radius: 70
+				});
 				
-				status.innerHTML = text;
-				requestAnimationFrame( run_all_time );
-			}
-			run_all_time();
-		});
+				var status = document.getElementById('status');
+				function run_all_time(){
+					var text = '';
+					if ( joystick.up ) text += 'up ';
+					if ( joystick.down ) text += 'down ';
+					if ( joystick.left ) text += 'left ';
+					if ( joystick.right ) text += 'right';
+					
+					status.innerHTML = text;
+					requestAnimationFrame( run_all_time );
+				}
+				run_all_time();
+			});
 		</script>
 	</head>
 	<body>
